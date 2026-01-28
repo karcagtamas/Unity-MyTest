@@ -12,6 +12,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     [SerializeField] GameObject name1;
     [SerializeField] GameObject name2;
+    [SerializeField] GameObject gateButton;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (myNumber == 7 && myChoice)
         {
             myName = "Tamas";
-            myGate.SetActive(true);
+            //myGate.SetActive(true);
 
             name1.GetComponent<TMPro.TMP_Text>().text = $"My Number: {myNumber} My Name: {myName}";
             name2.GetComponent<TMPro.TMP_Text>().text = "_____________";
@@ -32,15 +33,26 @@ public class NewMonoBehaviourScript : MonoBehaviour
         else
         {
             myName = "Bela";
-            myGate.SetActive(false);
+            //myGate.SetActive(false);
 
             name1.GetComponent<TMPro.TMP_Text>().text = "Tamas is inactive";
             name2.GetComponent<TMPro.TMP_Text>().text = "Bela is active";
         }
 
-        if (myNumber == 0) {
+        if (myNumber == 0)
+        {
             name1.GetComponent<TMPro.TMP_Text>().text = "";
             name2.GetComponent<TMPro.TMP_Text>().text = "";
         }
+    }
+
+    public void OpenGate()
+    {
+        myGate.GetComponent<Animator>().Play("GateSwing");
+    }
+
+    public void HideGateButton()
+    {
+        gateButton.SetActive(false);
     }
 }
