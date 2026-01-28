@@ -10,6 +10,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     [SerializeField] GameObject myGate;
 
+    [SerializeField] GameObject name1;
+    [SerializeField] GameObject name2;
+
     void Start()
     {
         myNumber = 7;
@@ -22,11 +25,22 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             myName = "Tamas";
             myGate.SetActive(true);
+
+            name1.GetComponent<TMPro.TMP_Text>().text = $"My Number: {myNumber} My Name: {myName}";
+            name2.GetComponent<TMPro.TMP_Text>().text = "_____________";
         }
         else
         {
             myName = "Bela";
             myGate.SetActive(false);
+
+            name1.GetComponent<TMPro.TMP_Text>().text = "Tamas is inactive";
+            name2.GetComponent<TMPro.TMP_Text>().text = "Bela is active";
+        }
+
+        if (myNumber == 0) {
+            name1.GetComponent<TMPro.TMP_Text>().text = "";
+            name2.GetComponent<TMPro.TMP_Text>().text = "";
         }
     }
 }
