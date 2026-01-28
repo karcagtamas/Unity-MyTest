@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
@@ -13,11 +14,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
     [SerializeField] GameObject name1;
     [SerializeField] GameObject name2;
     [SerializeField] GameObject gateButton;
+    [SerializeField] GameObject hiddenSphere;
+
+    [SerializeField] GameObject fadeIn;
+    [SerializeField] GameObject fadeOut;
 
     void Start()
     {
         myNumber = 7;
         myChoice = true;
+
+        StartCoroutine(MySequence());
     }
 
     void Update()
@@ -54,5 +61,18 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public void HideGateButton()
     {
         gateButton.SetActive(false);
+    }
+
+    IEnumerator MySequence()
+    {
+        yield return new WaitForSeconds(0.5f);
+        fadeIn.SetActive(false);
+        myGate.GetComponent<Animator>().Play("GateSwing");
+        yield return new WaitForSeconds(4);
+        gateButton.SetActive(false);
+        yield return new WaitForSeconds(2);
+        hiddenSphere.SetActive(true);
+        yield return new WaitForSeconds(2);
+        fadeOut.SetActive(true);
     }
 }
