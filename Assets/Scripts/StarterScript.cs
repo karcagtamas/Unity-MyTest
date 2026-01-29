@@ -19,6 +19,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
     [SerializeField] GameObject fadeIn;
     [SerializeField] GameObject fadeOut;
 
+    [SerializeField] AudioSource ding;
+
     void Start()
     {
         myNumber = 7;
@@ -60,7 +62,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     public void HideGateButton()
     {
-        gateButton.SetActive(false);
+        //gateButton.SetActive(false);
+        ding.Play();
     }
 
     IEnumerator MySequence()
